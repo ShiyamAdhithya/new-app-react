@@ -1,0 +1,10 @@
+# folders
+node_modules/
+
+
+
+# files
+.env
+
+#file types
+npm-debug.log*
