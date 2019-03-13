@@ -6,9 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:client": "cd ./src/client && npm start",
     "dev:server": "nodemon -r dotenv/config ./src/server.js",
-    "start:dev": "concurrently - kill-others \"npm run dev:server\" \"npm run dev:client\"",
+    "start:dev": "concurrently --kill-others \"npm run dev:server\" \"npm run dev:client\"",
     "build": "cd ./src/client && npm run build",
-    "start": "node -r dotenv/config ./src/server.js"
+    "start": "npm run build && node -r dotenv/config ./src/server.js"
   },
   "repository": {
     "type": "git",

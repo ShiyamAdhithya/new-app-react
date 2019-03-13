@@ -7,7 +7,7 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT;
 const DIST_DIR = __dirname;
-const STATIC_FILES = path.join(DIST_DIR, './client/build');
+const STATIC_FILES = path.join(DIST_DIR, 'client/build');
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: false}));
