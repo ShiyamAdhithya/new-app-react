@@ -4,7 +4,10 @@
   "description": "trial react node",
     "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -r dotenv/config ./src/server.js",
+    "dev:client": "cd ./src/client && npm start",
+    "dev:server": "nodemon -r dotenv/config ./src/server.js",
+    "start:dev": "concurrently - kill-others \"npm run dev:server\" \"npm run dev:client\"",
+    "build": "cd ./src/client && npm run build",
     "start": "node -r dotenv/config ./src/server.js"
   },
   "repository": {
@@ -22,6 +25,7 @@
   "homepage": "https://github.com/ShiyamAdhithya/new-app-react#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "concurrently": "^4.1.0",
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",

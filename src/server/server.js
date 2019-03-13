@@ -3,25 +3,28 @@ const morgan = require('morgan');
 const parser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
-//const result = require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT;
-//const DIST_DIR = __dirname;
-//const HTML_FILE = path.join(DIST_DIR, 'index.html');
+const DIST_DIR = __dirname;
+const STATIC_FILES = path.join(DIST_DIR, './client/build');
 
 app.use(parser.json());
 app.use(parser.urlencoded({ extended: false}));
 app.use(cors());
 app.use(morgan('combined'));
 
-// Addede Static files.
-//app.use(express.static(DIST_DIR))
+// Added Static files.
+app.use(express.static(STATIC_FILES));
 
 
-app.get('/',(req,res,nxt) => {
-    res.sendFile(HTML_FILE);
-});
+// app.get('/',(req,res,nxt) => {
+//     res.sendFile(STATIC_FILES);
+// });
+
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
 
 app.get('/serverhealth',(req,res,nxt) => {
     res.send('Server Up and Running');
